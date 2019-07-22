@@ -1,0 +1,6 @@
+#画像ファイルは管理対象外とする
+*.jpg
+*.png
+*.svg
+*.json
+link.js

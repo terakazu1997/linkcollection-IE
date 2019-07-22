@@ -1,0 +1,67 @@
+main{
+    position: relative;
+    z-index: 1;
+    padding-top: 100px;
+}
+
+.inContent{
+    margin-left:18px;
+}
+
+.inContent .box .item{
+    width:270px;
+    height:300px;
+    float: left;
+    margin-right:40px;
+    margin-bottom: 25px;
+}
+.inContent .box .item .imgLink img{
+    width: 100%;
+    height: 250px;
+    transition: all 0.3s ease;
+    border-radius: 5%;
+    box-shadow: 5px 5px rgba(127, 128, 127, 0.8);
+    border:solid 2px #111;
+    transform: scale(1.06, 1.07);
+}
+.inContent .box .item .imgLink :hover img{
+    opacity: .8;
+    box-shadow:none;
+    transform: none;
+}
+
+.inContent .box .item .linkTitle h3{
+    transition: all 0.3s ease;
+    color:#111;
+    text-align: center;
+}
+.inContent .box .item .imgLink:hover + .linkTitle h3,
+.inContent .box .item .linkTitle:hover h3{
+    margin-top: 14px;
+    padding:8px 0;
+    background-color: #111;
+    color:#FFF;
+    border:1px solid #eba40b;
+    box-shadow: 0 0 5px 2px rgba(241, 146, 22, 0.815);
+}
+
+@media screen and (max-width: 1000px){
+    main{
+        width: 780px;
+    }
+}
+@media screen and(min-width: 1000px) and (max-width:1350px){
+    main{
+        width: 1000px;
+    }
+}
+@media screen and (min-width: 1350px) and (max-width:1670px){
+    main{
+        width: 1350px;
+    }
+}
+@media screen and (min-width: 1670px){
+    main{
+        width: 1680px;
+    }
+}
