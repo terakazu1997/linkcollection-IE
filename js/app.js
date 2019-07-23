@@ -72,8 +72,11 @@ var app  = new Vue({
             }
         },
         replaceText:function(str){
-            return str.replace(/[\u30a1-\u30f6Ａ-Ｚａ-ｚ０-９]/g, function(match) {
-                var chr = str.match(/[\u30a1-\u30f6]/g)?match.charCodeAt(0) - 0x60 : match.charCodeAt(0) - 0xFEE0;
+            return str.replace(/[\u30a1-\u30f6a-zａ-ｚ０-９]/g, function(match) {
+                if(str.match(/[\u30a1-\u30f6]/g)){
+                    return String.fromCharCode(match.charCodeAt(0) - 0x60)
+                }
+                var chr = str.match(/[a-za-z]/g)? match.charCodeAt(0) & ~32: match.charCodeAt(0) - 0xFEE0;
                 return String.fromCharCode(chr)
             })
         }
