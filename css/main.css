@@ -9,15 +9,22 @@ main{
 }
 
 .inContent .box .item{
-    width:270px;
-    height:300px;
+    width:215px;
+    height:235px;
     float: left;
-    margin-right:40px;
-    margin-bottom: 25px;
 }
-.inContent .box .item .imgLink img{
+.inContent .box .item .imgLink{
+    margin:0 auto;
+    width: 86%;
+}
+.inContent .box .item .linkTitle{
+    margin:0 auto;
+    width: 94%;
+}
+
+.inContent .box .item .imgLink a img{
     width: 100%;
-    height: 250px;
+    height: 170px;
     transition: all 0.3s ease;
     border-radius: 5%;
     box-shadow: 5px 5px rgba(127, 128, 127, 0.8);
@@ -31,14 +38,17 @@ main{
 }
 
 .inContent .box .item .linkTitle h3{
+    margin-top: 13.5px;
+    height: 23px;
+    padding:5px 0;
     transition: all 0.3s ease;
     color:#111;
     text-align: center;
+    font-size:12.5px;
+    border:1px solid #eba40b;
 }
 .inContent .box .item .imgLink:hover + .linkTitle h3,
 .inContent .box .item .linkTitle:hover h3{
-    margin-top: 14px;
-    padding:8px 0;
     background-color: #111;
     color:#FFF;
     border:1px solid #eba40b;
