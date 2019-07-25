@@ -9,13 +9,13 @@ main{
 }
 
 .inContent .box .item{
-    width:215px;
-    height:235px;
+    width:250px;
+    height:195px;
     float: left;
 }
 .inContent .box .item .imgLink{
     margin:0 auto;
-    width: 86%;
+    width: 84%;
 }
 .inContent .box .item .linkTitle{
     margin:0 auto;
@@ -24,12 +24,12 @@ main{
 
 .inContent .box .item .imgLink a img{
     width: 100%;
-    height: 170px;
+    height: 131.25px;
     transition: all 0.3s ease;
     border-radius: 5%;
     box-shadow: 5px 5px rgba(127, 128, 127, 0.8);
     border:solid 2px #111;
-    transform: scale(1.06, 1.07);
+    transform: scale(1.07, 1.07);
 }
 .inContent .box .item .imgLink :hover img{
     opacity: .8;
@@ -39,12 +39,11 @@ main{
 
 .inContent .box .item .linkTitle h3{
     margin-top: 13.5px;
-    height: 23px;
     padding:5px 0;
     transition: all 0.3s ease;
     color:#111;
     text-align: center;
-    font-size:12.5px;
+    font-size:15px;
     border:1px solid #eba40b;
 }
 .inContent .box .item .imgLink:hover + .linkTitle h3,
