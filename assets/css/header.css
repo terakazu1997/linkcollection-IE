@@ -17,6 +17,13 @@
     color: #FFF;
     font-weight: bold;
 }
+#header #headerInner h1:hover{
+    color:#d68010;
+    transition:0.4s;
+}
+#header #headerInner h1 .active{
+    color:#d68010;
+}
 #header #headerInner nav ul{
     position: absolute;
     left: 150px;
@@ -35,8 +42,13 @@
     font-weight: bold;
     border-bottom: 1px solid #FFF;
 }
+#header #headerInner nav ul li .active{
+    color:#d68010;
+    border-bottom: 1px solid #d68010;
+}
 #header #headerInner nav ul li a:hover{
-	transition: 0.4s;
+    transition: 0.4s;
+    color:#d68010;
     border-bottom: 1px solid #d68010;
 }
 

@@ -8,21 +8,21 @@ const defaultFolderLinks =[
     {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
 ]
 
-const  defaultFileLinks =[
-        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"},
-        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
+const defaultFileLinks =[
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
 ]
 
 var createAllLinks = function (siteLinks,folderLinks,fileLinks){
-        var allLinks = [];
-        for(var i =0;i<siteLinks.length;i++){
-            allLinks.push(siteLinks[i]);
-        }
-        for(var i =0;i<folderLinks.length;i++){
-            allLinks.push(folderLinks[i]);
-        }
-        for(var i =0;i<fileLinks.length;i++){
-            allLinks.push(fileLinks[i]);
-        }
-        return allLinks
+    var allLinks = [];
+    for(var i =0;i<siteLinks.length;i++){
+        allLinks.push(siteLinks[i]);
     }
+    for(var i =0;i<folderLinks.length;i++){
+        allLinks.push(folderLinks[i]);
+    }
+    for(var i =0;i<fileLinks.length;i++){
+        allLinks.push(fileLinks[i]);
+    }
+    return allLinks
+}

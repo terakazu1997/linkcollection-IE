@@ -8,6 +8,7 @@ const mainComponent = {
         lists:{
             type:Array
         }
+        
     },
     template: (function(){/*
         <div>
