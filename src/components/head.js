@@ -19,7 +19,6 @@ const headComponent = {
                                 <input id="searchText" placeholder="リンク" name="searchText" type="text" 
                                         v-model="computedKey"
                                         v-focus></li>
-                            <li class="search"><a href="#"><img src="img/search.svg"></a></li>
                         </ul>
                     </nav>
                 </div>

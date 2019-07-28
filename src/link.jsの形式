@@ -1,16 +1,16 @@
 const defaultSiteLinks =[
-    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen1.png"},
-    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen2.jpg"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
 ]
 
 const defaultFolderLinks =[
-    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen5.jpg"},
-    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen6.jpg"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
 ]
 
 const  defaultFileLinks =[
-        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/karaage.jpg"},
-        {linkTitle: "リンクタイトル",anchorLink:"リンク先名,imgSrc: "img/pan.jpg"},
+        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"},
+        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "画像格納先"}
 ]
 
 var createAllLinks = function (siteLinks,folderLinks,fileLinks){
