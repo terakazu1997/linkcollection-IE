@@ -1,0 +1,28 @@
+const defaultSiteLinks =[
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen1.png"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen2.jpg"},
+]
+
+const defaultFolderLinks =[
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen5.jpg"},
+    {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/ramen6.jpg"},
+]
+
+const  defaultFileLinks =[
+        {linkTitle: "リンクタイトル",anchorLink:"リンク先名",imgSrc: "img/karaage.jpg"},
+        {linkTitle: "リンクタイトル",anchorLink:"リンク先名,imgSrc: "img/pan.jpg"},
+]
+
+var createAllLinks = function (siteLinks,folderLinks,fileLinks){
+        var allLinks = [];
+        for(var i =0;i<siteLinks.length;i++){
+            allLinks.push(siteLinks[i]);
+        }
+        for(var i =0;i<folderLinks.length;i++){
+            allLinks.push(folderLinks[i]);
+        }
+        for(var i =0;i<fileLinks.length;i++){
+            allLinks.push(fileLinks[i]);
+        }
+        return allLinks
+    }
