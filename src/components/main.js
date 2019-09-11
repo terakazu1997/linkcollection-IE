@@ -1,4 +1,4 @@
-var defaultAllLinks = createAllLinks(defaultSiteLinks,defaultFolderLinks,defaultFileLinks)
+var defaultAllLinks = createAllLinks(defaultSystemLinks,defaultContLinks,defaultLearnLinks)
 
 const mainComponent = {
     props:{
@@ -10,7 +10,7 @@ const mainComponent = {
         }
         
     },
-    template: (function(){/*
+    template: `
         <div>
             <main>
                 <div class="inContent crearfix">
@@ -28,8 +28,7 @@ const mainComponent = {
                     </ul>
                 </div>
             </main>
-        </div>
-        */}).toString().match(/(?:\/\*(?:[\s\S]*?)\*\/)/).pop().replace(/^\/\*/, "").replace(/\*\/$/, ""),
+        </div>`,
         data:function(){
             return{
                 linkLists:null
@@ -45,14 +44,23 @@ const mainComponent = {
                 case '/':
                     this.linkLists=defaultAllLinks;
                     break;
-                case '/site':
-                    this.linkLists=defaultSiteLinks;
+                case '/system':
+                    this.linkLists=defaultSystemLinks;
                     break;
-                case '/folder':
-                    this.linkLists=defaultFolderLinks;
+                case '/cont':
+                    this.linkLists=defaultContLinks;
                     break;
-                case '/file':
-                    this.linkLists=defaultFileLinks;
+                case '/learn':
+                    this.linkLists=defaultLearnLinks;
+                    break;
+                case '/exp':
+                    this.linkLists=defaultExpLinks;
+                    break;
+                case '/tell':
+                    this.linkLists=defaultTellLinks;
+                    break;
+                case '/happy':
+                    this.linkLists=defaultHappyLinks;
                     break;
             }
         },
