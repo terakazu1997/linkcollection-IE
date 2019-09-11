@@ -3,25 +3,23 @@ const router = new VueRouter({
     routes:[
         {
             path: '/',
-            component:headComponent,
-            children:[
-                {
-                    path: '/',
-                    component:allComponent
-                },
-                {
-                    path:'/site',
-                    component: siteComponent
-                },
-                {
-                    path:'/folder',
-                    component: folderComponent
-                },
-                {
-                    path:'/file',
-                    component: fileComponent
-                },
-            ]
+            name:'all',
+            component:mainComponent
+        },
+        {
+            path:'/site',
+            name:'site',
+            component: mainComponent
+        },
+        {
+            path:'/folder',
+            name:'folder',
+            component: mainComponent
+        },
+        {
+            path:'/file',
+            name:'file',
+            component: mainComponent
         }
     ]
 })

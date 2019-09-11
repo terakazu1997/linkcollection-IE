@@ -1,0 +1,47 @@
+Vue.use(Vuex);
+
+
+var defaultSiteLinks = defaultLinks.filter(link => link.janru === 'site')
+var defaultFolderLinks = defaultLinks.filter(link => link.janru === 'folder')
+var defaultFileLinks = defaultLinks.filter(link => link.janru === 'file')
+
+const state = {
+        routingDetailObjects:[
+            {name:'all',link:defaultLinks},
+            {name:'site',naviName:'サイト',link:defaultSiteLinks},
+            {name:'folder',naviName:'フォルダ',link:defaultFolderLinks},
+            {name:'file',naviName:'ファイル',link:defaultFileLinks},
+        ],
+        linkLists:[],
+        defaultLists:[],
+        listIndex:0
+}
+
+const mutations ={
+    getFirstLinkList(state,{firstLink}){
+        state.defaultLists=firstLink
+        state.linkLists = firstLink
+    },
+    getCurrentLinkList(state,{currentList}){
+        state.defaultLists = currentList
+        state.linkLists = currentList
+    },
+    searchLinkLists(state,{keyword}){
+        state.linkLists = [];
+        if(keyword === ''){
+            state.linkLists = state.defaultLists;
+            return
+        }
+        for(var i =0;i<state.defaultLists.length;i++){
+            var replaceKeyword = replaceText(keyword);
+            var replaceLinkTitle = replaceText(state.defaultLists[i].linkTitle);
+            if(replaceLinkTitle.match(replaceKeyword)){
+                state.linkLists.push(state.defaultLists[i])
+            }
+        }
+    }
+}
+const store =  new Vuex.Store({
+    state,
+    mutations
+})
