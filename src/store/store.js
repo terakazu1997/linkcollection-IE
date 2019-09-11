@@ -13,8 +13,7 @@ const state = {
             {name:'file',naviName:'ファイル',link:defaultFileLinks},
         ],
         linkLists:[],
-        defaultLists:[],
-        listIndex:0
+        defaultLists:[]
 }
 
 const mutations ={

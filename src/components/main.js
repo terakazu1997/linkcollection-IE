@@ -69,9 +69,6 @@ const mainComponent = {
             routingDetailObjects:function(){
                 return this.$store.state.routingDetailObjects
             },
-            showContentDetailModal:function(){
-                return this.$store.state.showContentDetailModal
-            },
             linkLists:function(){
                 return this.$store.state.linkLists
             },
