@@ -78,7 +78,6 @@ const mainComponent = {
             displayLinkLists:function(){
                 const itemCount = this.pageNumber * this.onePageItems;
                 var tempLinkLists = [];
-                var linkLists = this.$store.state.linkLists
                 this.$store.state.linkLists.some(function(tempLinkList){
                     if(tempLinkLists.length === itemCount){
                         return true;
@@ -105,5 +104,4 @@ const mainComponent = {
             },
 
         }
-
 }
