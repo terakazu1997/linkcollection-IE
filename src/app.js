@@ -3,6 +3,7 @@ Vue.directive('focus', {
         el.focus();
     }
 })
+Vue.use(window.VueInfiniteLoading);
 
 var app  = new Vue({
     el:"#app",
@@ -10,4 +11,5 @@ var app  = new Vue({
         keyword:''
     },
     router:router,
+    store:store,
 })

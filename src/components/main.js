@@ -1,21 +1,11 @@
-var defaultAllLinks = createAllLinks(defaultSystemLinks,defaultContLinks,defaultLearnLinks)
-
 const mainComponent = {
-    props:{
-        keyword:{
-            type:String
-        },
-        lists:{
-            type:Array
-        }
-        
-    },
-    template: `
+    template: (function(){/*
         <div>
+            <head-component  @input="getKeyword" :paramsRoutingObject= "routingDetailObjects" />
             <main>
                 <div class="inContent crearfix">
                     <ul class="box">
-                        <li class="item"v-for="linkList in linkLists" :key="linkList.linkTitle" >
+                        <li class="item" v-for="(linkList, index) in displayLinkLists" :key="index" >
                         <section>
                             <div class="imgLink">
                                 <a :href="linkList.anchorLink" target="_blank"><img :src="linkList.imgSrc"></a>
@@ -27,66 +17,91 @@ const mainComponent = {
                         </li>
                     </ul>
                 </div>
+                <infinite-loading
+                :identifier="returnIdentifier"
+                @infinite="infiniteHandler">
+                <div slot="no-results"/>
+                <span slot="no-more"/>
+            </infinite-loading>  
             </main>
-        </div>`,
-        data:function(){
-            return{
-                linkLists:null
+        </div>
+        */}).toString().match(/(?:\/\*(?:[\s\S]*?)\*\/)/).pop().replace(/^\/\*/, "").replace(/\*\/$/, ""),
+        data:function() {
+            return {
+                keyword: '',
+                pageNumber: 1,
+                onePageItems: 12,
+                loading: false,
+                returnIdentifier: 1
+            }
+        },
+        props:{
+            identifier:{
+                type:Number,
+                default: 1
             }
         },
         watch: {
             keyword: function() {
-                this.getResult()
+                this.returnIdentifier +=1;
+                this.$store.commit('searchLinkLists',this.keyword)
+            },
+            $route:function(){
+                this.keyword = ''
+                this.returnIdentifier +=1;
+                this.$store.commit('getCurrentLinkList',this.$route.params.lists)
             }
         },
         mounted:function(){
-            switch(this.$root._route.fullPath){
-                case '/':
-                    this.linkLists=defaultAllLinks;
-                    break;
-                case '/system':
-                    this.linkLists=defaultSystemLinks;
-                    break;
-                case '/cont':
-                    this.linkLists=defaultContLinks;
-                    break;
-                case '/learn':
-                    this.linkLists=defaultLearnLinks;
-                    break;
-                case '/exp':
-                    this.linkLists=defaultExpLinks;
-                    break;
-                case '/tell':
-                    this.linkLists=defaultTellLinks;
-                    break;
-                case '/happy':
-                    this.linkLists=defaultHappyLinks;
-                    break;
+            this.routingDetailObjects.array.some(function(routingDetailObject) {
+                if(this.$route.name === routingDetailObject.name){
+                    this.$store.commit('getFirstLinkList',routingDetailObject.link);
+                    return true;
+                }
+            });
+        },
+        components: {
+            'head-component':headComponent,
+            'infinite-loading': VueInfiniteLoading.default
+        },
+        computed: {
+            routingDetailObjects:function(){
+                return this.$store.state.routingDetailObjects
+            },
+            showContentDetailModal:function(){
+                return this.$store.state.showContentDetailModal
+            },
+            linkLists:function(){
+                return this.$store.state.linkLists
+            },
+            displayLinkLists:function(){
+                const itemCount = this.pageNumber * this.onePageItems;
+                let tempLinkLists = [];
+                this.$store.state.linkLists.some(function(tempLinkList){
+                    if(tempLinkLists.length === itemCount){
+                        return true;
+                    }
+                    tempLinkLists.push(tempLinkList);
+                })
+                return tempLinkLists;
             }
         },
         methods:{
-            getResult:function(){
-                this.linkLists = [];
-                if(this.keyword === ''){
-                    this.linkLists = this.lists;
-                    return
-                }
-                for(var i =0;i<this.lists.length;i++){
-                    var replaceKeyword = this.replaceText(this.keyword);
-                    var replaceLinkTitle = this.replaceText(this.lists[i].linkTitle);
-                    if(replaceLinkTitle.match(replaceKeyword)){
-                        this.linkLists.push(this.lists[i])
-                    }
-                }
+            getKeyword:function(newKeyword){
+                this.keyword = newKeyword
             },
-            replaceText:function(str){
-                str =str.replace(/[ぁ-んａ-ｚＡ-Ｚ０-９]/g, function(chr) {
-                    var replaceChr = chr.match(/[ぁ-ん]/g)?chr.charCodeAt(0) + 0x60:chr.charCodeAt(0) - 65248;
-                    return String.fromCharCode(replaceChr);
-                })
-                str = str.match(/[a-z]/g)? str.toUpperCase(): str;
-                return str;
-            }
+            infiniteHandler:function($state) {
+                var p= this
+                setTimeout(function()  {
+                    if (Math.floor(p.linkLists.length / p.onePageItems) >= p.pageNumber) {    
+                        p.pageNumber ++;
+                        $state.loaded();
+                    } else {
+                        $state.complete();
+                    }
+                },300)
+            },
+
         }
 
 }
