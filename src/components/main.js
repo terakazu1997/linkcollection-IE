@@ -53,9 +53,10 @@ const mainComponent = {
             }
         },
         mounted:function(){
-            this.routingDetailObjects.array.some(function(routingDetailObject) {
-                if(this.$route.name === routingDetailObject.name){
-                    this.$store.commit('getFirstLinkList',routingDetailObject.link);
+            p = this
+            this.routingDetailObjects.some(function(routingDetailObject) {
+                if(p.$route.name === routingDetailObject.name){
+                    p.$store.commit('getFirstLinkList',routingDetailObject.link);
                     return true;
                 }
             });
@@ -76,7 +77,8 @@ const mainComponent = {
             },
             displayLinkLists:function(){
                 const itemCount = this.pageNumber * this.onePageItems;
-                let tempLinkLists = [];
+                var tempLinkLists = [];
+                var linkLists = this.$store.state.linkLists
                 this.$store.state.linkLists.some(function(tempLinkList){
                     if(tempLinkLists.length === itemCount){
                         return true;

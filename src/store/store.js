@@ -18,15 +18,15 @@ const state = {
 }
 
 const mutations ={
-    getFirstLinkList:function(firstLink){
+    getFirstLinkList:function(state,firstLink){
         state.defaultLists=firstLink
         state.linkLists = firstLink
     },
-    getCurrentLinkList:function(currentList){
+    getCurrentLinkList:function(state,currentList){
         state.defaultLists = currentList
         state.linkLists = currentList
     },
-    searchLinkLists:function(keyword){
+    searchLinkLists:function(state,keyword){
         state.linkLists = [];
         if(keyword === ''){
             state.linkLists = state.defaultLists;

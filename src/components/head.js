@@ -68,10 +68,11 @@ const headComponent = {
     },
     methods:{
         setRouteActiveClass:function(){
-            this.paramsRoutingObject(function(paramRoutingObject){
-                this.activeLinkLists[paramRoutingObject.name] = false;
-                if(this.$route.name === paramRoutingObject.name){
-                    this.activeLinkLists[paramRoutingObject.name] = true;
+            var p = this
+            this.paramsRoutingObject.some(function(paramRoutingObject){
+                p.activeLinkLists[paramRoutingObject.name] = false;
+                if(p.$route.name === paramRoutingObject.name){
+                    p.activeLinkLists[paramRoutingObject.name] = true;
                 }
             })
         }
